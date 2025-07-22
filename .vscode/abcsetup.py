@@ -1,0 +1,33 @@
+import sys
+import os
+
+TEMPLATE = '''\
+import sys
+sys.setrecursionlimit(10*6)
+if len(sys.argv) == 2:
+    sys.stdin = open(sys.argv[1])
+import math
+from collections import deque
+import bisect
+
+#--------------------解答--------------------#
+'''
+
+def create_abc_folder(contest_number):
+    base_path = os.path.join(os.path.expanduser("~"), "Desktop", "python","AtCoder", "contest")
+    contest_dir = os.path.join(base_path, f"ABC{contest_number}")
+    os.makedirs(contest_dir, exist_ok=True)
+
+    for ch in "abcdefg":
+        file_path = os.path.join(contest_dir, f"{ch}.py")
+        if not os.path.exists(file_path):
+            with open(file_path, "w") as f:
+                f.write(TEMPLATE)
+
+    print(f"Created contest folder: {contest_dir}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python abcsetup.py <contest_number>")
+    else:
+        create_abc_folder(sys.argv[1])

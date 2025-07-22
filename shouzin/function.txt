@@ -1,0 +1,15 @@
+#10進数valueをbase進数変換(2 <= base <= 9)
+def base10int(value,base):
+    A = []
+    while value > 0:
+        A.append(str(value % base))
+        value //= base
+    return  int(''.join(A[::-1]))
+
+#深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
+#True数がnodeの個数と一致するとき、nodeは連結である。
+def dfs(cur):
+    seen[cur] =True
+    for i in node[cur]:
+        if seen[i] == False:
+            dfs(i)
