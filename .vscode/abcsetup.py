@@ -10,7 +10,7 @@ import math
 from collections import deque
 import bisect
 
-#--------------------解答--------------------#
+#----------------------------------------#
 '''
 
 def create_abc_folder(contest_number):
@@ -23,6 +23,11 @@ def create_abc_folder(contest_number):
         if not os.path.exists(file_path):
             with open(file_path, "w") as f:
                 f.write(TEMPLATE)
+
+    input_txt_path = os.path.join(contest_dir, "input.txt")
+    if not os.path.exists(input_txt_path):
+        with open(input_txt_path, "w") as f:
+            f.write("")
 
     print(f"Created contest folder: {contest_dir}")
 
