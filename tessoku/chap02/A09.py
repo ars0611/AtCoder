@@ -7,3 +7,7 @@ from collections import deque
 import bisect
 
 #----------------------------------------#
+h,w,n = map(int, input().split())
+s = [[0]*(w+1) for _ in range(h+1)]
+#差分の累積和を取るとうまくいきそう
+for _ in range(n):

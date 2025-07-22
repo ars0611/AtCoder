@@ -245,7 +245,7 @@ l_only_even = [v for v in l if v%2==0] #if文ぶち込める
 
 xs = [1, 2, 3]; ys = ["a", "b", "c"]
 xys = [[x, y] for x in xs for y in ys] #多重ループもいけてまう！
-普通に可読性に欠けるから多重の内包表現は非推奨だな
+
 
 n = 4
 root_n = math.sqrt(n)
