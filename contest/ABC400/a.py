@@ -6,4 +6,9 @@ import math
 from collections import deque
 import bisect
 
-#--------------------‰ð“š--------------------#
+#----------------------------------------#
+a = int(input())
+if 400 % a != 0:
+    print(-1)
+    exit()
+print(400 // a)

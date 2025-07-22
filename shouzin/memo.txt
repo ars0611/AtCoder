@@ -7,3 +7,4 @@ bisect.bisect_left(list,挿入したい値) = 挿入すべきidx
 bit演算 &(and),|(or),^(xor)はいちいち2進変換せずともやってくれる
 座標圧縮とかいうの神すぎdict{key:value}をつかう
 set()は重複を許さないし、参照時はO(1)でガチ神
+整数平方数が欲しければsqrtではなくisqrtを用いましょう
