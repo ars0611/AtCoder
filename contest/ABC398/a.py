@@ -7,3 +7,10 @@ from collections import deque
 import bisect
 
 #----------------------------------------#
+n = int(input())
+ans = ["-"]*n
+if n % 2 == 0:
+    ans[n//2] = ans[n//2-1] = "="
+else:
+    ans[n//2] = "="
+print("".join(ans))
