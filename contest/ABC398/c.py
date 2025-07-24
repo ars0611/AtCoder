@@ -33,3 +33,8 @@ else:
     print(dict_a[ans_ai])
 
 #ごり押し
+'''
+想定解
+dict_aをkey = 数,value = 数を持つ人のlistとする。
+aを降順に受け取って、dict[ai]のlengthが1だったら数を出力して終了
+'''
