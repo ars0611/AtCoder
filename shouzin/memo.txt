@@ -7,5 +7,6 @@ for文回すときはiのrangeガチケア
 bit演算 &(and),|(or),^(xor)はいちいち2進変換せずともやってくれる
 座標圧縮とかいうの神すぎdict{key:value}をつかう print(変数名[key])で出力
 変数名[key] = valueで追記
+defaultdict(int) は、存在しないキーにアクセスされたら0を自動でセットする辞書
 set()は重複を許さないし、参照時はO(1)でガチ神
 整数平方数が欲しければsqrtではなくisqrtを用いましょう
