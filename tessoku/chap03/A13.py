@@ -11,9 +11,21 @@ from collections import defaultdict
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-#解説AC（しゃくとり法）
+#解法２解説AC（しゃくとり法）
+R = [0]*n
+for i in range(n):
+    if i == 0:
+        R[i] = 0
+    else:
+        R[i] = R[i-1]
 
+    while R[i] < n-1 and a[R[i] + 1] - a[i] <= k:
+        R[i] += 1
 
+ans = 0
+for i in range(n):
+    ans += (R[i]-i)
+print(ans)
 #自力AC解法１（にぶたん）
 '''
 cnt = 0
