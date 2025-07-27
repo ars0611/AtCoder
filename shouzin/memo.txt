@@ -1,7 +1,7 @@
 ---実装時に気を付ける基礎的なこと---
 .join()はstr型にしか使えない
-for文回すときはiのrangeガチケア
-整数平方数が欲しければsqrtではなくisqrtを用いましょう
+for文回すときはiのrangeケア
+整数平方数が欲しければsqrtではなくisqrtを用いましょう(int(math.sqrt)は誤差がでる)
 
 ---データ型関連---
 配列.pop(0)よりdeque.popleft()のほうが早い
@@ -11,6 +11,7 @@ set()：順序付き集合で重複を許さないし、参照時はO(1)
 defaultdict(int) は、存在しないキーにアクセスされたら0を自動でセットする辞書
 変数名[key] = valueで追記
 for value in dict_a.values(): 辞書型のvalueについてすべて参照できる。.keys()とするとkeyについても同様
+list = sorted(dict.keys())とするとkeyを昇順にしたlistを得る。.values()とするとvalueについても同様
 
 ---アルゴリズム関連---
 二分探索：bisect.bisect_left(list,挿入したい値) = 挿入すべきidx
