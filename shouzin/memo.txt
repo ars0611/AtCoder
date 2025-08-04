@@ -10,6 +10,8 @@ for文回すときはiのrangeケア
 ---データ型関連---
 配列.pop(0)よりdeque.popleft()のほうが早い
 
+sorted(list,key = lambda x:x[n])とすると二次元配列listを第n列に着目してsortできる
+
 set()：順序付き集合で重複を許さないし、参照時はO(1)
 
 defaultdict(int) は、存在しないキーにアクセスされたら0を自動でセットする辞書
