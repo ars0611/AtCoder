@@ -3,7 +3,7 @@ def base10int(value,base):
     A = []
     while value > 0:
         A.append(str(value % base))
-        value //= base
+        value // = base
     return  int(''.join(A[::-1]))
 
 #深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
@@ -21,3 +21,14 @@ def Enumerate(list):
             if i >> j & 1: #j番目のbitが立ってるか
                 #bitが立っているときにする処理
     return
+
+#最大公約数(互除法)
+def GCD(A, B):
+	while A >= 1 and B >= 1:
+		if A >= B:
+			A = A % B
+		else:
+			B = B % A
+	if A >= 1:
+		return A
+	return B
