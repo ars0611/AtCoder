@@ -11,6 +11,7 @@ for文回すときはiのrangeケア
 配列.pop(0)よりdeque.popleft()のほうが早い
 
 sorted(list,key = lambda x:x[n])とすると二次元配列listを第n列に着目してsortできる
+list_copy = copy.deepcopy(list)とすると深いコピーが作れる
 
 set()：順序付き集合で重複を許さないし、参照時はO(1)
 

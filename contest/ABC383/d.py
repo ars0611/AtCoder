@@ -7,6 +7,5 @@ from collections import deque
 import bisect
 from collections import defaultdict
 import itertools
-import copy
 
 #----------------------------------------#
