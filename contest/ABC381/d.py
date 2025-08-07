@@ -11,3 +11,9 @@ import itertools
 import copy
 
 #----------------------------------------#
+n = int(input())
+a = list(map(int, input().split()))
+
+#尺取り
+ans = 0
+l = 
