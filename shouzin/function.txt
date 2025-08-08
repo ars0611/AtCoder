@@ -3,7 +3,7 @@ def base10int(value,base):
     A = []
     while value > 0:
         A.append(str(value % base))
-        value // = base
+        value //= base
     return  int(''.join(A[::-1]))
 
 #深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
