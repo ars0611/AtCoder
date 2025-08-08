@@ -11,18 +11,14 @@ import itertools
 import copy
 
 #----------------------------------------#
-n, k = map(int, input().split())
+n = int(input())
 a = list(map(int, input().split()))
 
-#dp[i]について石i個残ってて勝ち確ならTrue,負け確ならFalse
-dp = [False]*(n+1)
-for i in range(n+1):
-    #最適な手を探す
-    for j in range(k):
-        if 0 <= i-a[j] and dp[i-a[j]] == False:
-            dp[i] = True
+xor_sum = a[0]
+for i in range(1,n):
+    xor_sum = xor_sum ^ a[i]
 
-if dp[n]:
+if xor_sum >= 1:
     print("First")
 else:
     print("Second")
