@@ -43,6 +43,7 @@ LCS：最長部分文字列。二次元DPを行う。それぞれのi,j文字目
 from itertools import combinations
 combinations(list(range(1,n+1)), m)は[1, ..., n+1]から重複なしでn個選ぶ組み合わせを全列挙する
 自明ではあるが、得られる組み合わせは狭義単調増加
+list(itertools.permutations(list))で順列を全列挙したlistが得られる
 
 繰り返し二乗法：指数を進変換し、ビットが立っている箇所に関して累乗をかけあわせる
 ->a**bを愚直に求めるとO(b)だが,O(logb)に減らせる
