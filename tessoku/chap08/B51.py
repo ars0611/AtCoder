@@ -5,11 +5,16 @@ if len(sys.argv) == 2:
 from collections import Counter
 from collections import deque
 from collections import defaultdict
-from sortedcontainers import SortedSet, SortedList, SortedDict
-import heapq
 import bisect
 import math
 import itertools
 import copy
 
 #----------------------------------------#
+s = input()
+stack = []
+for i in range(len(s)):
+    if s[i] == "(":
+        stack.append(i+1)
+    else:
+        print(f"{stack.pop()} {i+1}")

@@ -5,11 +5,14 @@ if len(sys.argv) == 2:
 from collections import Counter
 from collections import deque
 from collections import defaultdict
-from sortedcontainers import SortedSet, SortedList, SortedDict
-import heapq
 import bisect
 import math
 import itertools
 import copy
 
 #----------------------------------------#
+a, b, c = map(int, input().split())
+if a + b + c == 0:
+    print("Yes")
+else:
+    print("No")

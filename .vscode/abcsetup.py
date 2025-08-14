@@ -9,6 +9,8 @@ if len(sys.argv) == 2:
 from collections import Counter
 from collections import deque
 from collections import defaultdict
+from sortedcontainers import SortedSet, SortedList, SortedDict
+import heapq
 import bisect
 import math
 import itertools
