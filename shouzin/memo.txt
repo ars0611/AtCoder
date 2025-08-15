@@ -14,6 +14,7 @@ for文回すときはiのrangeケア
 heapq.heapify(list) :=listを優先度付きキューに変換
 heapq.heappush(list, value) := listにvalueをpush
 heapq.heappop(list) := heapからminをpop
+逆に,maxをpopしたかったら符号反転して格納すればよい
 
 sorted(list,key = lambda x:x[n])とすると二次元配列listを第n列に着目してsortできる
 list_copy = copy.deepcopy(list)とすると深いコピーが作れる
@@ -82,6 +83,7 @@ query系の問題はデータの持ち方を工夫するとTLEが取れるかも
 ---グラフアルゴリズム---
 bfs：最短経路絡み
 dfs：grid絡みであれば,dxとdyの配列用意して,nodeを定義せずにdx,dyを関数で使って探索していくとうまい
+有向グラフでも,無向グラフと見て順向きでない辺のほうの情報を持っておくとき,符号反転とかうまいことするといいかも
 
 ---その他---
 bit演算 &(and),|(or),^(xor)はいちいち自分で二進変換せずともやってくれる
