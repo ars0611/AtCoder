@@ -13,3 +13,10 @@ import itertools
 import copy
 
 #----------------------------------------#
+n, m, l = map(int, input().split())
+a = list(map(int, input().split()))
+s = []
+for i in range(n-l+1):
+    s_i = sum(a[i:i+l]) % m
+    s.append(s_i)
+
