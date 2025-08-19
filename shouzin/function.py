@@ -1,4 +1,4 @@
-#10進数valueをbase進数変換(2 <= base <= 9)
+# 10進数valueをbase進数変換(2 <= base <= 9)
 def base10int(value,base):
     A = []
     while value > 0:
@@ -6,15 +6,15 @@ def base10int(value,base):
         value //= base
     return  int(''.join(A[::-1]))
 
-#深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
-#True数がnodeの個数と一致するとき、nodeは連結である。
+# 深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
+# True数がnodeの個数と一致するとき、nodeは連結である。
 def dfs(cur):
     seen[cur] =True
     for i in node[cur]:
         if seen[i] == False:
             dfs(i)
 
-#bit全探索
+# bit全探索
 def Enumerate(list):
     for i in range(1 << len(list)): #全パターン調べる。i.e. range(2 ** len(list))
         for j in range(len(list)): #各ビット調べる
@@ -22,7 +22,7 @@ def Enumerate(list):
                 #bitが立っているときにする処理
     return
 
-#最大公約数(互除法)
+# 最大公約数(互除法)
 def GCD(A, B):
 	while A >= 1 and B >= 1:
 		if A >= B:
@@ -33,7 +33,7 @@ def GCD(A, B):
 		return A
 	return B
 
-#文字列ハッシュ化(使うときはl38以下コピペ)
+# 文字列ハッシュ化(使うときはl38以下コピペ)
 class StringHash:
     #アルファベットを0-25の整数に変換
     t = list(map(lambda c: (ord(c) - ord('a')), s))
@@ -53,7 +53,7 @@ class StringHash:
     def get_hash(l, r):
         return (h[r] - h[l - 1] * power100[r - l + 1]) % mod
 
-#セグ木(l58以下)
+# セグ木(l58以下)
 class SegmentTree:
     ##### segfunc#####
     def segfunc(x, y):
@@ -122,3 +122,39 @@ class SegmentTree:
                 l >>= 1
                 r >>= 1
             return res
+
+# Union-Find木
+class UnionFind:
+    # n頂点のUnion-Find木を生やす
+    # 親を表す配列とグループのサイズを表す配列を用意する
+    def __init__(self, n):
+        self.par = [-1] * n
+        self.siz = [1] * n
+    
+    # 頂点xの根を求める関数を定義する
+    def root(self, x):
+        # 根にたどり着くまで親をたどる
+        while self.par[x] != -1:
+            x = self.par[x]
+        return x
+    
+    # 頂点u,vを統合する関数を定義する
+    def unite(self, u, v):
+        root_u = self.root(u)
+        root_v = self.root(v)
+        
+        # 既に統合されているなら何もしない
+        if root_u == root_v:
+            return
+
+        # 頂点数の多い方に統合する（これにより計算量が抑えられる）
+        if self.siz[root_u] < self.siz[root_v]:
+            self.par[root_u] = root_v
+            self.siz[root_v] += self.siz[root_u]
+        else:
+            self.par[root_v] = root_u
+            self.siz[root_u] += self.siz[root_v]
+
+    # 頂点u,vが同じグループに属するか判定する関数を定義する
+    def same(self, u, v):
+        return self.root(u) == self.root(v)
