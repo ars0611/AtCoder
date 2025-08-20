@@ -7,6 +7,7 @@ for文回すときはiのrangeケア
 除算でオーバーフローの可能性があるなら、式変形をして整数で扱えるようにする
 自明だが、桁数がとても大きい数の演算は計算に時間がかかるため油断するとTLE踏む
 計算量の見積もりは雰囲気ではなく丁寧にやる
+クエリを逆順に取得したら,出力も逆順にしましょう
 
 ---データ型関連---
 配列.pop(0)よりdeque.popleft()のほうが早い
@@ -29,8 +30,6 @@ defaultdict(int) は、存在しないキーにアクセスされたら0を自�
 変数名[key] = valueで追記
 for value in dict_a.values(): 辞書型のvalueについてすべて参照できる。.keys()とするとkeyについても同様
 list = sorted(dict.keys())とするとkeyを昇順にしたlistを得る。.values()とするとvalueについても同様
-
-樹形図全列挙：再帰やitertools.productで実装できる(ABC367 C)
 
 ---アルゴリズム関連---
 二分探索：bisect.bisect_left(list,挿入したい値) = 挿入すべきidx
@@ -57,6 +56,7 @@ from itertools import combinations
 combinations(list(range(1,n+1)), m)は[1, ..., n+1]から重複なしでn個選ぶ組み合わせを全列挙する
 自明ではあるが、得られる組み合わせは狭義単調増加
 list(itertools.permutations(list))で順列を全列挙したlistが得られる
+樹形図全列挙：再帰やitertools.productで実装できる(ABC367 C)
 
 繰り返し二乗法：指数を進変換し、ビットが立っている箇所に関して累乗をかけあわせる
 ->a**bを愚直に求めるとO(b)だが,O(logb)に減らせる
@@ -96,6 +96,7 @@ dfs：grid絡みであれば,dxとdyの配列用意して,nodeを定義せずに
 pathを管理するにはstuckと相性がよさそう
 
 Union-Find：グラフの操作や同じ連結成分にある頂点の組が含まれるかの判断、連結成分の数え上げに強い
+辺の削除は難しいので,逆に見て辺の追加と捉える
 
 ダイクストラ法：重み付きグラフで最短経路を求める際に有効
 今いる頂点の近傍で未到達の頂点を探す -> コストを累積して未到達な頂点のときのコストを更新
