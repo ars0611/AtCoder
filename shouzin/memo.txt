@@ -30,6 +30,8 @@ defaultdict(int) は、存在しないキーにアクセスされたら0を自�
 for value in dict_a.values(): 辞書型のvalueについてすべて参照できる。.keys()とするとkeyについても同様
 list = sorted(dict.keys())とするとkeyを昇順にしたlistを得る。.values()とするとvalueについても同様
 
+樹形図全列挙：再帰やitertools.productで実装できる(ABC367 C)
+
 ---アルゴリズム関連---
 二分探索：bisect.bisect_left(list,挿入したい値) = 挿入すべきidx
 単調増加な関数->答えで二分探索 i.e. 答えがある値以上か以下かTF返すcheck関数
