@@ -6,6 +6,29 @@ def base10int(value,base):
         value //= base
     return  int(''.join(A[::-1]))
 
+# 直積
+# 長さnで各要素が一つ前の要素の10以上大きい数の組み合わせを全列挙する
+# ただし、最後の要素の上限はm
+# 直積を抽象化したライブラリ思いつかないからしばらくこれを書き換えて頑張る
+n, m = map(int, input().split())
+ans = []
+
+def solve(v):
+    size = len(v)
+    if size == n:
+        ans.append(v.copy())
+        return
+    if size == 0:
+        start = 1
+    else:
+        start = v[-1] + 10
+    limit  = m - 10*(n - size - 1)
+    for i in range(start, limit + 1):
+        v.append(i)
+        solve(v)
+        v.pop()
+solve([])
+
 # 深さ優先探索(dfs) curをrootとし、通ったnodeをTrueとする。
 # True数がnodeの個数と一致するとき、nodeは連結である。
 def dfs(cur):

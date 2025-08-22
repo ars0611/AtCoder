@@ -12,15 +12,23 @@ import copy
 
 #----------------------------------------#
 n, m = map(int, input().split())
-
 ans = []
-#
-for c in combinations(list(range(1,m-9*(n-1)+1)), n):
-    l = list(c)
-    for i in range(1,n):
-        l[i] += 9*i
-    ans.append(l)
-
+# 直積
+def solve(v):
+    size = len(v)
+    if size == n:
+        ans.append(v.copy())
+        return
+    if size == 0:
+        start = 1
+    else:
+        start = v[-1] + 10
+    limit  = m - 10*(n - size - 1)
+    for i in range(start, limit + 1):
+        v.append(i)
+        solve(v)
+        v.pop()
+solve([])
 print(len(ans))
-for i in ans:
-    print(*i)
+for ans_i in ans:
+    print(*ans_i)
