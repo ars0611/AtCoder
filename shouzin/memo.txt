@@ -26,6 +26,9 @@ from sortedcontainers import SortedSet, SortedList, SortedDict
 勝手にsortしてくれる上ににぶたんも備わっている最強データ構造
 環境構築はbashで pip install sortedcontainersを実行するだけ
 
+from more_itertools import distinct_permutations
+順列全列挙で重複を除いてくれる -> set(itertools(s))を高速にやってくれる
+
 defaultdict(int) は、存在しないキーにアクセスされたら0を自動でセットする辞書
 変数名[key] = valueで追記
 for value in dict_a.values(): 辞書型のvalueについてすべて参照できる。.keys()とするとkeyについても同様
