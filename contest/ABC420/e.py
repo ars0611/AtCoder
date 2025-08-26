@@ -49,20 +49,20 @@ p = [0]* n
 uf = UnionFind(n)
 for _ in range(q):
     query = list(map(int, input().split()))
-    if query[0] == 1:
-        w1 = p[uf.root(query[1]-1)-1]
-        w2 = p[uf.root(query[2]-1)-1]
+    if query[0] == 1 and not uf.same(query[1]-1, query[2]-1):
+        w1 = p[uf.root(query[1]-1)]
+        w2 = p[uf.root(query[2]-1)]
         uf.unite(query[1]-1, query[2]-1)
-        p[uf.root(query[1]-1)-1] = w1 + w2
+        p[uf.root(query[1]-1)] = w1 + w2
     elif query[0] == 2:
         if c[query[1]-1] == 0:
             c[query[1]-1] = 1
-            p[uf.root(query[1]-1)-1] += 1
+            p[uf.root(query[1]-1)] += 1
         else:
             c[query[1]-1] = 0
-            p[uf.root(query[1]-1)-1] -= 1
-    else:
-        if p[uf.root(query[1]-1)-1] > 0:
+            p[uf.root(query[1]-1)] -= 1
+    elif query[0] == 3:
+        if p[uf.root(query[1]-1)] > 0:
             print("Yes")
         else:
             print("No")
