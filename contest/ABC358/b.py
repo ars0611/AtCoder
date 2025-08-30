@@ -9,17 +9,12 @@ from more_itertools import distinct_permutations
 import heapq, bisect, math, itertools
 
 #----------------------------------------#
-sx, sy = map(int, input().split())
-tx, ty = map(int, input().split())
-
-# スタートとゴールをタイルの左側に揃える
-if (sx + sy) % 2 == 1:
-    sx -= 1
-if (tx + ty) % 2 == 1:
-    tx -= 1
-
-dx = abs(tx - sx)
-dy = abs(ty - sy)
-print((dy + max(dx, dy)) // 2)
-
-# 似た方針なのにWA数個取れなかったので泣く泣く解説AC
+n, a = map(int, input().split())
+t = list(map(int, input().split()))
+cur = 0
+for i in range(n):
+    if cur  >= t[i]:
+        cur += a
+    else:
+        cur = t[i] + a
+    print(cur)
