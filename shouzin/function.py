@@ -1,11 +1,3 @@
-# 10進数valueをbase進数変換(2 <= base <= 9)
-def base10int(value,base):
-    A = []
-    while value > 0:
-        A.append(str(value % base))
-        value //= base
-    return  int(''.join(A[::-1]))
-
 # 直積
 # 長さnで各要素が一つ前の要素の10以上大きい数の組み合わせを全列挙する
 # ただし、最後の要素の上限はm
@@ -36,14 +28,6 @@ def dfs(cur):
     for i in node[cur]:
         if seen[i] == False:
             dfs(i)
-
-# bit全探索
-def Enumerate(list):
-    for i in range(1 << len(list)): #全パターン調べる。i.e. range(2 ** len(list))
-        for j in range(len(list)): #各ビット調べる
-            if i >> j & 1: #j番目のbitが立ってるか
-                #bitが立っているときにする処理
-    return
 
 # 最大公約数(互除法)
 def GCD(A, B):
