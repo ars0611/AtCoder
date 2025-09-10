@@ -78,6 +78,7 @@ list(itertools.permutations(list))で順列を全列挙したlistが得られる
 lcm * gcd == a * bが成り立つ
 
 a/bを素数mで割ったときの余りはa * (b**m-2)をmで割ったときの余りと等しいらしい(証明略)
+modは引き算に言い換えられる。 ex: a mod b = a - (a//b)*b
 
 ゲームの勝ち方：勝ち負けの状態についてDP
 ニムの勝ち方：すべてのXORが0なら負け（証明略）
