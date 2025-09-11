@@ -37,6 +37,8 @@ for value in dict_a.values(): 辞書型のvalueについてすべて参照でき
 list = sorted(dict.keys())とするとkeyを昇順にしたlistを得る。.values()とするとvalueについても同様
 
 ---アルゴリズム関連---
+スライドmax,min：尺取りの感覚で累積max,minをとれる
+
 二分探索：bisect.bisect_left(list,挿入したい値) = 挿入すべきidx
 単調増加な関数->答えで二分探索 i.e. 答えがある値以上か以下かTF返すcheck関数
 しゃくとり法：条件を満たすような区間のカウントに使える
