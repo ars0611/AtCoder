@@ -9,6 +9,8 @@ from more_itertools import distinct_permutations
 import heapq, bisect, math, itertools
 
 #----------------------------------------#
-n = int(input())
-mod = 998244353
-
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+for ai in a:
+    if ai % k == 0:
+        print(ai // k)

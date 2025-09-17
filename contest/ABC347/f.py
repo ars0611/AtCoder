@@ -9,6 +9,3 @@ from more_itertools import distinct_permutations
 import heapq, bisect, math, itertools
 
 #----------------------------------------#
-n = int(input())
-mod = 998244353
-
