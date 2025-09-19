@@ -12,3 +12,10 @@ import heapq, bisect, math, itertools
 n = int(input())
 mod = 998244353
 
+k = len(str(n)) # nの桁数
+ten_kpower = pow(10, k, mod)
+bunshi = n * (pow(ten_kpower, n, mod) - 1) % mod
+bunbo = pow(ten_kpower - 1, mod-2, mod) #逆元
+
+ans = bunbo * bunshi % mod
+print(ans)
