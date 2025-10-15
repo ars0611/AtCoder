@@ -16,6 +16,19 @@ b = list(map(int, input().split()))
 dp = [float("inf")] * n
 dp[0] = 0
 dp[1] = a[0]
-for i in range(2, n):
+for i in range(2,n):
     dp[i] = min(dp[i - 1] + a[i - 1], dp[i - 2] + b[i - 2])
-print(dp[n - 1])
+
+ans = [n]
+cur = n - 1
+while cur != 0:
+    if dp[cur] == dp[cur - 1] + a[cur - 1]:
+        cur -= 1
+    else:
+        cur -= 2
+    ans.append(cur + 1)
+
+k = len(ans)
+ans.reverse()
+print(k)
+print(*ans)
