@@ -38,6 +38,8 @@ defaultdict(int) は、存在しないキーにアクセスされたら0を自�
 for value in dict_a.values(): 辞書型のvalueについてすべて参照できる。.keys()とするとkeyについても同様
 list = sorted(dict.keys())とするとkeyを昇順にしたlistを得る。.values()とするとvalueについても同様
 
+部分文字列を削除していくやつとかのテトリスみたいに連動して消す奴はスタックでうまくいきがち。
+
 ---アルゴリズム関連---
 スライドmax,min：尺取りの感覚で累積max,minをとれる
 
