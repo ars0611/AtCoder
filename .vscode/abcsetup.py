@@ -16,19 +16,21 @@ import heapq, bisect, math, itertools
 '''
 
 def create_abc_folder(contest_number):
-    base_path = os.path.join(os.path.expanduser("~"), "Desktop", "python","AtCoder", "contest")
+    # スクリプトのあるフォルダから一つ上（= c:\python\AtCoder）をルートとする
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    base_path = os.path.join(repo_root, "contest")
     contest_dir = os.path.join(base_path, f"ABC{contest_number}")
     os.makedirs(contest_dir, exist_ok=True)
 
     for ch in "abcdefg":
         file_path = os.path.join(contest_dir, f"{ch}.py")
         if not os.path.exists(file_path):
-            with open(file_path, "w") as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.write(TEMPLATE)
 
     input_txt_path = os.path.join(contest_dir, "input.txt")
     if not os.path.exists(input_txt_path):
-        with open(input_txt_path, "w") as f:
+        with open(input_txt_path, "w", encoding="utf-8") as f:
             f.write("")
 
     print(f"Created contest folder: {contest_dir}")
