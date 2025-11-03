@@ -29,17 +29,6 @@ def dfs(cur):
         if seen[i] == False:
             dfs(i)
 
-# 最大公約数(互除法)
-def GCD(A, B):
-	while A >= 1 and B >= 1:
-		if A >= B:
-			A = A % B
-		else:
-			B = B % A
-	if A >= 1:
-		return A
-	return B
-
 # 文字列ハッシュ化(使うときはl38以下コピペ)
 class StringHash:
     #アルファベットを0-25の整数に変換

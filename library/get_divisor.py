@@ -1,7 +1,7 @@
 import math
 
-# 素因数分解
-def prime_factorization(num):
+# 約数の列挙
+def get_divisor(num):
     res = set()
     root_num = math.isqrt(num)
     k = 1

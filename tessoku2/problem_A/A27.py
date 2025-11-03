@@ -9,8 +9,17 @@ from more_itertools import distinct_permutations
 import heapq, bisect, math, itertools
 
 #----------------------------------------#
+# ユークリッドの互除法による解法
+a, b = map(int, input().split())
 
+x = max(a, b)
+y = min(a, b)
+while y > 0:
+    tmp = x % y
+    x = y
+    y = tmp
 
+print(x)
 
 # 素因数分解による解法
 '''
