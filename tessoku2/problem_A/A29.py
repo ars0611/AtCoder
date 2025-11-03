@@ -11,4 +11,17 @@ import heapq, bisect, math, itertools
 #----------------------------------------#
 a, b = map(int, input().split())
 mod = 1000000007
-print(pow(a, b, mod))
+
+# print(pow(a, b, mod)) <- これでいいけど繰り返し二乗法で書いてみましょう
+k = 0
+while 1 << k <= b:
+    k += 1
+
+ans = 1
+p = a
+for i in range(k):
+    if (1 << i) & b:
+        ans = (ans * p) % mod
+    p = (p * p) % mod
+
+print(ans % mod)
