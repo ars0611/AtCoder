@@ -16,19 +16,22 @@ from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
 
 #----------------------------------------#
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    s = list(input().strip())
-    l = n
-    r = n
-    for i in range(n - 1):
-        if ord(s[i]) > ord(s[i + 1]):
-            l = i
+n, m = map(int, input().split())
+price = []
+spec = []
+func = []
+for _ in range(n):
+    p, c, *f = map(int, input().split())
+    price.append(p)
+    spec.append(c)
+    func.append(set(f))
+
+cmp = False
+for i in range(n):
+    for j in range(n):
+        if i == j: continue
+        if price[i] >= price[j] and func[j].issuperset(func[i]) and (price[i] > price[j] or spec[j] > spec[i] and func[j].issuperset(func[i])):
+            cmp = True
             break
-    for i in range(l + 1, n):
-        if ord(s[l]) < ord(s[i]):
-            r = i - 1
-            break
-    shifted = s[:l] + s[l + 1: r + 1] + s[l:l + 1] + s[r + 1:]
-    print("".join(shifted))
+
+print("Yes" if cmp else "No")
