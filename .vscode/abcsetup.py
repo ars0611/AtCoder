@@ -7,6 +7,7 @@ if len(sys.argv) == 2:
     sys.stdin = open(sys.argv[1])
 sys.setrecursionlimit(10**7)
 input = sys.stdin.readline
+#----------------------------------------#
 import math
 import bisect
 import itertools
@@ -18,8 +19,8 @@ from sortedcontainers import SortedList
 from sortedcontainers import SortedSet
 from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
-
 #----------------------------------------#
+
 '''
 
 def create_abc_folder(contest_number):
