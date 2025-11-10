@@ -3,6 +3,7 @@ if len(sys.argv) == 2:
     sys.stdin = open(sys.argv[1])
 sys.setrecursionlimit(10**7)
 input = sys.stdin.readline
+#----------------------------------------#
 import math
 import bisect
 import itertools
@@ -14,49 +15,44 @@ from sortedcontainers import SortedList
 from sortedcontainers import SortedSet
 from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
-
 #----------------------------------------#
 n = int(input())
 s = input().strip()
 
-pre_sum = [0]
-o = 0
-c = 0
-for i in range(n):
-    if s[i] == "(":
-        pre_sum.append(pre_sum[-1] + 1)
-        o += 1
-    elif s[i] == ")":
-        pre_sum.append(pre_sum[-1] - 1)
-        c += 1
-    else:
-        pre_sum.append(pre_sum[-1])
-
-diff = o - c
-
-l = 1
-r = 1
+stack_brkt = []
+stack_idx = []
+brkt = set(["(", ")"])
 todel = []
-while l < n + 1:
-    if s[l - 1] == "(" and pre_sum[l] >= diff:
-        cnt = pre_sum[l - 1]
-        r = l + 1
-        while r < n + 1 and pre_sum[r] - cnt > 0:
-            r += 1
-        if r < n + 1 and pre_sum[r] == cnt and s[r - 1] == ")":
-            todel.append((l - 1, r - 1))
-            l = r + 1
+for i in range(n):
+    if s[i] not in brkt: continue
+    
+    if stack_brkt and  stack_brkt[-1] == "(" and s[i] == ")":
+        stack_brkt.pop()
+        start = stack_idx.pop()
+        end = i
+        if not todel:
+            todel.append((start, end))
         else:
-            l += 1
+            while todel:
+                prev_start, prev_end = todel[-1]
+                if start <= prev_start and prev_end <= end:
+                    todel.pop()
+                else:
+                    break
+            todel.append((start, end))
+    
     else:
-        l += 1
+        stack_brkt.append(s[i])
+        stack_idx.append(i)
 
-cur = 0
+isdeled = [False]*n
+for start, end in todel:
+    for i in range(start, end + 1):
+        isdeled[i] = True
+
 ans = []
-for l, r in todel:
-    ans += s[cur:l]
-    cur = r + 1
-if cur < n:
-    ans.append(s[cur:])
+for i in range(n):
+    if not isdeled[i]:
+        ans.append(s[i])
 
 print("".join(ans))
