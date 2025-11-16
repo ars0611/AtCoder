@@ -1,5 +1,6 @@
+# sh = StringHash(s)
 class StringHash:
-    def __init__(self, s, base, mod):
+    def __init__(self, s, base = 100, mod = 2147483647):
         self.n = len(s)
         self.mod = mod
         self.base = base
@@ -17,6 +18,6 @@ class StringHash:
         for i in range(self.n):
             self.h[i + 1] = (self.h[i] * self.base + t[i]) % self.mod
 
-    # sのl - 1文字目からr文字目までのハッシュ値
+    # s[l:r](0-index)のハッシュ値
     def get_hash(self, l, r):
         return (self.h[r] - self.h[l] * self.power[r - l]) % self.mod
