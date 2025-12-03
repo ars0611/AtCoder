@@ -1,4 +1,7 @@
 # python tips   
+## if文   
+- `if all(visited[i] for i in range(n))`などとすると、任意のiでvisited[i]がTrueかどうかの分岐を一行で書ける。便利   
+- `if all(visited)`も同じ意味。なんかこっちの方が速い説もある（サンプル数1）   
 ## 二進数   
 - bit演算 `&(and)`,`|(or)`,`^(xor)`はいちいち自分で二進変換せずともやってくれる
 - `if y >> j & 1 == 1:`でyを二進表記した際のjビット目が1かどうか判定   
