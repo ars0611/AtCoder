@@ -17,7 +17,6 @@ from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
 #----------------------------------------#
 s = input().strip()
-nums = set(range(10))
-flg = len(s) == 8 and s[0].isupper() and s[-1].isupper() and all(int(s[i]) in nums for i in range(1, 7)) and 100000 <= int(s[1:7]) <= 999999
+nums = set([str(i) for i in range(10)])
+flg = len(s) == 8 and s[0].isupper() and s[-1].isupper() and all(s[i] in nums for i in range(1, 7)) and 100000 <= int(s[1:7]) <= 999999
 print("Yes" if flg else "No")
-

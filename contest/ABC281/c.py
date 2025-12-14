@@ -16,4 +16,13 @@ from sortedcontainers import SortedSet
 from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
 #----------------------------------------#
-
+n, t = map(int, input().split())
+a = list(map(int, input().split()))
+pre = [0]
+for i in range(n):
+    pre.append(pre[-1] + a[i])
+t %= pre[-1]
+for i in range(n):
+    if pre[i] <= t <= pre[i + 1]:
+        print(i + 1, t - pre[i])
+        break
