@@ -59,14 +59,18 @@ class FordFulkerson:
             flow += f
         return flow
 
-n = int(input())
+n, m = map(int, input().split())
 c = [input().strip() for _ in range(n)]
-ff = FordFulkerson(2 * n + 2)
+ff = FordFulkerson(n + 24 + 2)
 for i in range(n):
-    ff.addEdge(0, i + 1, 1)
-    ff.addEdge(n + i + 1, 2 * n + 1, 1)
-    for j in range(n):
-        if c[i][j] == ".": continue
+    ff.addEdge(0, i + 1, 10)
+    for j in range(24):
+        if not int(c[i][j]): continue
         ff.addEdge(i + 1, n + j + 1, 1)
-ans = ff.maxFlow(0, 2 * n + 1)
-print(ans)
+for j in range(24):
+    ff.addEdge(n + j + 1, n + 24 + 1, m)
+maxFlow = ff.maxFlow(0, n + 24 + 1)
+print("Yes" if maxFlow >= 24 * m else "No")
+
+# ひとりにつき10時間働けるので、スタートから従業員まで容量10の辺
+# n時につきm人働いてほしいので、時刻からtまで容量mの辺を張る
