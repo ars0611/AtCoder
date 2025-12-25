@@ -15,4 +15,5 @@ from sortedcontainers import SortedList
 from sortedcontainers import SortedSet
 from sortedcontainers import SortedDict
 from more_itertools import distinct_permutations
+from functools import lru_cache
 #----------------------------------------#

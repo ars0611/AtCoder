@@ -21,3 +21,9 @@
 - set型について、和集合とか包含関係とか結構柔軟に集合に関する演算を施せる   
 ## 再帰関数   
 - pythonの再帰関数は激遅なのでできる限りwhile文などで書こう！
+- 以下のようにすると楽にメモ化再帰が書ける
+```
+from functools import lru_cache
+@lru_cache
+def fuga(hoge):
+```
