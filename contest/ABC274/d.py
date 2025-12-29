@@ -19,10 +19,16 @@ from functools import lru_cache
 #----------------------------------------#
 n, x, y = map(int, input().split())
 a = list(map(int, input().split()))
-pos = [(0, 0), (a[0], 0)]
 
-# graph張っていけそうな感じするけどどうなん
-# graph張ると頂点数が2**nで爆発するか。じゃあDP？
-# 縦横にaiの距離で移動できるわけで添え字の偶奇で縦か横かは決まってる
-# 縦横それぞれ正負どっちにいくか決めてその和がx,yにいけるかどうかで判定できそう
-# bit全探索では2**nでやばいか
+dp = [[False] * (10 * n * 2 + 1) for _ in range(n + 1)]
+dp[0][10 * n] = True
+dp[1][10 * n + a[0]] = True
+for i in range(n - 1):
+    for j in range(10 * n * 2 + 1):
+        if not dp[i][j]: continue
+        dp[i + 2][j + a[i + 1]] = True
+        dp[i + 2][j - a[i + 1]] = True
+if n % 2 == 0:
+    print("Yes" if dp[n][10 * n + y] and dp[n - 1][10 * n + x] else "No")
+else:
+    print("Yes" if dp[n][10 * n + x] and dp[n - 1][10 * n + y] else "No")
