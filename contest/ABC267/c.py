@@ -19,14 +19,15 @@ from functools import lru_cache
 #----------------------------------------#
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
-preSi = [0]
-preSm = [0]
+preS = [0]
+cnt = 0
 for i in range(n):
-    preSi.append(preSi[-1] + (i + 1) * a[i])
-    preSm.append(preSm[-1] + m * a[i])
-ans = -1
-for i in range(n - m + 1):
-    ans = max(ans, preSi[m + i] - preSi[i] - (preSm[m + i] - preSm[i]))
+    preS.append(preS[-1] + a[i])
+    if i < m:
+        cnt += (i + 1) * a[i]
+ans = cnt
+for i in range(n - m):
+    cnt += a[i + m] * m - (preS[i + m] - preS[i])
+    ans = max(ans, cnt)
 print(ans)
 
-# なんだこれわかんね寝るわ
