@@ -29,6 +29,9 @@
 - つまるところ、バブルソートのソート回数みたいなもん   
 - ちなみにO(N**2)だが、BITで高速化ができる（要履修）   
 ## 幾何
+### 座標の回転
+- 行列の積で求まる
+- `X = x * math.cos(math.radians(d)) - y * math.sin(math.radians(d)), x * math.sin(math.radians(d)) + y * math.cos(math.radians(d))`
 ### 二点のなす角
 - 内積や外積、余弦定理などが考えられる
 - tanΘの逆関数で楽に求められる。mathモジュールの返り値の範囲には注意（参考: https://imagingsolution.net/math/angle_between_two_lines/）
