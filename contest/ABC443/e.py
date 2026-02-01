@@ -22,32 +22,28 @@ t = int(input())
 for _ in range(t):
     n, c = map(int, input().split())
     s = [input().strip() for _ in range(n)]
-    col = [SortedList() for _ in range(n)]
+    dp = [[False]*n for _ in range(n)]
+    dp[n - 1][c - 1] = True
+    l = [n - 1]*n
     for i in range(n):
+        dp[i][c - 1] = True
         for j in range(n):
-            if s[i][j] == '.':
-                col[j].add(i)
-    di = [-1, -1, -1]
-    dj = [-1, 0, 1]
-    visited = [[False] * n for _ in range(n)]
-    q = deque([(n - 1, c - 1, 0, col)])
-    ans = [0]*n
-    while q:
-        curi, curj, cnt, curcol = q.popleft()
-        if cnt == n - 1:
-            if curi == 0:
-                ans[curj] = 1
-            continue
-        for k in range(3):
-            ni = curi + di[k]
-            nj = curj + dj[k]
-            if 0 <= ni < n and 0 <= nj < n:
-                if s[ni][nj] == '.':
-                    q.append((ni, nj, cnt + 1, curcol))
-                else:
-                    idx = col[nj].bisect_left(ni + 1)
-                    if idx != len(col[nj]):
-                        ccol = curcol[:]
-                        ccol[nj].discard(idx)
-                        q.append((ni, nj, cnt + 1, ccol))
-    print(*ans)
+            if s[i][j] == '#':
+                l[j] = i
+    for i in range(n - 2, -1, -1):
+        for j in range(n):
+            if j > 0 and dp[i + 1][j - 1] or j + 1 < n and dp[i + 1][j + 1] or dp[i + 1][j]:
+                if s[i][j] == '.':
+                    dp[i][j] = True
+                elif l[j] == i:
+                    for ii in range(i + 1):
+                        dp[ii][j] = True
+    ans = ['0']*n
+    for j in range(n):
+        if dp[0][j]:
+            ans[j] = '1'
+    print("".join(ans))
+
+# 一番下から上に向かうのでbfsではなく下からのdpを考える
+# 自分がいる場所より下すべてが.であるとき、そこより真上は直進で壁を破壊できる
+# なので列ごとに最も下にある壁を持っておけば、その最も下の壁に到達したとき、直進で(0, j)が到達可能になる
