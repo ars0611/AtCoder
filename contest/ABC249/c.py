@@ -20,8 +20,18 @@ from functools import cmp_to_key
 #----------------------------------------#
 n, k = map(int, input().split())
 s = [input().strip() for _ in range(n)]
-
+cnt = [Counter(si) for si in s]
 ans = 0
 for bit in range(2 ** n):
+    chars = defaultdict(int)
     for b in range(n):
+        if bit & (1 << b):
+            for ch in "abcdefghijklmnopqrstuvwxyz":
+                chars[ch] += cnt[b][ch]
+    kinds = 0
+    for v in chars.values():
+        if v == k:
+            kinds += 1
+    ans = max(ans, kinds)
 
+print(ans)
