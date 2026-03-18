@@ -18,23 +18,13 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
-n, x, y = map(int, input().split())
-a = list(map(int, input().split()))
-ans = 0
-r = 0
-s = SortedList()
-for l in range(n):
-    if l > r:
-        r = l
-    if s and s[0] == y and s[-1] == x:
-        ans += 1
-    while r < n and y <= a[r] <= x:
-        s.add(a[r])
-        r += 1
-        if s[0] == y and s[-1] == x:
-            ans += 1
-    s.discard(a[l])
-print(ans)
-
-# 解けてませんよー
-# 条件を満たすように尺取りの区間をずらせているので、あとは答えの加算部分をなんとかしたい。
+n, m = map(int, input().split())
+a = Counter(map(int, input().split()))
+b = list(map(int, input().split()))
+for bi in b:
+    if a[bi] < 1:
+        print("No")
+        break
+    a[bi] -= 1
+else:
+    print("Yes")

@@ -18,23 +18,20 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
-n, x, y = map(int, input().split())
-a = list(map(int, input().split()))
-ans = 0
-r = 0
-s = SortedList()
-for l in range(n):
-    if l > r:
-        r = l
-    if s and s[0] == y and s[-1] == x:
-        ans += 1
-    while r < n and y <= a[r] <= x:
-        s.add(a[r])
-        r += 1
-        if s[0] == y and s[-1] == x:
-            ans += 1
-    s.discard(a[l])
-print(ans)
-
-# 解けてませんよー
-# 条件を満たすように尺取りの区間をずらせているので、あとは答えの加算部分をなんとかしたい。
+a = SortedList()
+q = int(input())
+query = [list(map(int, input().split())) for _ in range(q)]
+l = 0
+for i in range(q):
+    if query[i][0] == 1:
+        x = query[i][1]
+        a.add(x)
+        l += 1
+    elif query[i][0] == 2:
+        x, k = query[i][1], query[i][2]
+        idx = a.bisect_right(x)
+        print(a[idx - k] if idx - k >= 0 else -1)
+    else:
+        x, k = query[i][1], query[i][2]
+        idx = a.bisect_left(x)
+        print(a[idx + k - 1] if l > idx + k - 1 else -1)
