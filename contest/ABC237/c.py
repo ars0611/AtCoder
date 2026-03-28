@@ -30,7 +30,6 @@ for i in range(l):
     if s[i] != 'a':
         suf = i
         break
-
 t = s[suf:pref + 1]
 ll = len(t)
 for i in range(ll // 2):
@@ -38,6 +37,4 @@ for i in range(ll // 2):
         print("No")
         break
 else:
-    print("Yes")
-
-# 後で解く
+    print("Yes" if l - pref >= suf + 1 else "No")

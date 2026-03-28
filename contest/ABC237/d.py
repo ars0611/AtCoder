@@ -18,4 +18,12 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
-
+n = int(input())
+s = input().strip()
+a = deque([n])
+for i in range(n):
+    if s[n - 1 - i] == 'L':
+        a.append(n - 1 - i)
+    else:
+        a.appendleft(n - 1 - i)
+print(*a)
