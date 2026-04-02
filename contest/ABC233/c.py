@@ -18,4 +18,22 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
-
+n, x = map(int, input().split())
+l = []
+a = []
+cnter = []
+for _ in range(n):
+    li, *ai = list(map(int, input().split()))
+    newAi = list(set(ai))
+    newLi = len(newAi)
+    l.append(newLi)
+    a.append(newAi)
+    cnter.append(Counter(ai))
+cur = cnter[0]
+for i in range(1, n):
+    nxt = Counter()
+    for j in range(l[i]):
+        for p, cnt in cur.items():
+            nxt[p * a[i][j]] += cnt * cnter[i][a[i][j]]
+    cur = nxt
+print(cur[x])

@@ -18,4 +18,15 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
+x = input().strip()
+s = ['0']
+for xi in x:
+    s.append(str(int(xi) + int(s[-1])))
+d = s[:]
+n = len(d)
+for i in range(n - 1, 0, -1):
+    d[i - 1] = str(int(d[i - 1]) + int(d[i]) // 10)
+    d[i] = str(int(d[i]) % 10)
+print(int(''.join(d)))
 
+# キャストしすぎて汚い

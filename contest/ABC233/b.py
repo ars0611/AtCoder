@@ -20,4 +20,4 @@ from functools import cmp_to_key
 #----------------------------------------#
 l, r = map(int, input().split())
 s = input().strip()
-print(s[:l - 1] + s[r - 1:l - 2:-1] + s[r:])
+print(s[:l - 1] + ''.join(reversed(list(s[l - 1:r]))) + s[r:])
