@@ -18,4 +18,13 @@ from more_itertools import distinct_permutations
 from functools import lru_cache
 from functools import cmp_to_key
 #----------------------------------------#
-
+n, d = map(int, input().split())
+wall = [tuple(map(int, input().split())) for _ in range(n)]
+wall.sort(key=lambda x: x[1])
+cur = -1
+cnt = 0
+for l, r in wall:
+    if cur < l:
+        cnt += 1
+        cur = r + d - 1
+print(cnt)
