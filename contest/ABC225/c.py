@@ -21,7 +21,8 @@ from functools import cmp_to_key
 n, m = map(int, input().split())
 b = [list(map(int, input().split())) for _ in range(n)]
 start = b[0][0]
-if 7 - start % 7 < m:
+rem = {1: 7, 2:6, 3:5, 4:4, 5:3, 6:2, 0:1}
+if rem[start % 7] < m:
     print("No")
     exit()
 for i in range(n):
